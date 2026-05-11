@@ -1,29 +1,32 @@
-# maxon4
+# ERP Playwright Showcase
 
-> My swell Nuxt.js project
+This repository serves as a professional demonstration of Software Quality Assurance and Test Automation skills. It features an automated testing suite for a Vue.js-based ERP system (MaxonErp).
 
-## Build Setup
+## 🚀 Project Focus
 
-``` bash
-# install dependencies
-$ yarn install
+- **Test Framework:** Playwright (JavaScript)
+- **Documentation Standard:** ISTQB (International Software Testing Qualifications Board)
+- **Key Challenge:** Since this is a frontend-centric showcase, a primary focus is placed on **API Mocking**. This allows for testing complex ERP workflows (Dashboard, Sales, Purchase) without requiring a live backend.
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+## 📄 Test Documentation
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+The testing process is structured according to industry standards:
 
-# generate static project
-$ yarn generate
+- [ISTQB Test Plan](./TESTPLAN.md) - Strategic approach, scope, and acceptance criteria.
+
+## 🛠 Setup & Installation
+
+### Start the Application (Requires Node 16)
+
+```bash
+nvm use 16
+yarn install
+yarn dev
 ```
 
-# demo website admin
-https://maxon-vue.herokuapp.com/
+### Execute Tests (Requires Node 20+)
 
-# demo online shop
-https://mypos1.herokuapp.com/
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-"# maxon-vue" 
+```bash
+nvm use 20
+npx playwright test
+```
