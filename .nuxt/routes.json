@@ -3,72 +3,84 @@
     "name": "customer",
     "path": "/customer",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/customer.vue",
-    "chunkName": "pages/customer"
+    "chunkName": "pages/customer",
+    "_name": "_2add703d"
   },
   {
     "name": "inventory",
     "path": "/inventory",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/inventory.vue",
-    "chunkName": "pages/inventory"
+    "chunkName": "pages/inventory",
+    "_name": "_5849fa0d"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/login/index.vue",
-    "chunkName": "pages/login/index"
+    "chunkName": "pages/login/index",
+    "_name": "_cf73fdc6"
   },
   {
     "name": "supplier",
     "path": "/supplier",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/supplier.vue",
-    "chunkName": "pages/supplier"
+    "chunkName": "pages/supplier",
+    "_name": "_6ccd432b"
   },
   {
     "name": "po-order",
     "path": "/po/order",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/po/order.vue",
-    "chunkName": "pages/po/order"
+    "chunkName": "pages/po/order",
+    "_name": "_b78c40c6"
   },
   {
     "name": "set-Media",
     "path": "/set/Media",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/set/Media.vue",
-    "chunkName": "pages/set/Media"
+    "chunkName": "pages/set/Media",
+    "_name": "_294bdb08"
   },
   {
     "name": "set-toko",
     "path": "/set/toko",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/set/toko.vue",
-    "chunkName": "pages/set/toko"
+    "chunkName": "pages/set/toko",
+    "_name": "_5e6d77ea"
   },
   {
     "name": "so-form",
     "path": "/so/form",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/so/form.vue",
-    "chunkName": "pages/so/form"
+    "chunkName": "pages/so/form",
+    "_name": "_2b38e608"
   },
   {
     "name": "so-order",
     "path": "/so/order",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/so/order.vue",
-    "chunkName": "pages/so/order"
+    "chunkName": "pages/so/order",
+    "_name": "_8962608c"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_07c05303"
   },
   {
     "name": "po-view-id",
     "path": "/po/view/:id?",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/po/view/_id.vue",
-    "chunkName": "pages/po/view/_id"
+    "chunkName": "pages/po/view/_id",
+    "_name": "_5ea46dd1"
   },
   {
     "name": "so-view-id",
     "path": "/so/view/:id?",
     "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/so/view/_id.vue",
-    "chunkName": "pages/so/view/_id"
+    "chunkName": "pages/so/view/_id",
+    "_name": "_6c36ac94"
   }
 ]
