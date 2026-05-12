@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
@@ -12,22 +13,17 @@ const _294bdb08 = () => interopDefault(import('../pages/set/Media.vue' /* webpac
 const _5e6d77ea = () => interopDefault(import('../pages/set/toko.vue' /* webpackChunkName: "pages/set/toko" */))
 const _2b38e608 = () => interopDefault(import('../pages/so/form.vue' /* webpackChunkName: "pages/so/form" */))
 const _8962608c = () => interopDefault(import('../pages/so/order.vue' /* webpackChunkName: "pages/so/order" */))
+const _07c05303 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 const _5ea46dd1 = () => interopDefault(import('../pages/po/view/_id.vue' /* webpackChunkName: "pages/po/view/_id" */))
 const _6c36ac94 = () => interopDefault(import('../pages/so/view/_id.vue' /* webpackChunkName: "pages/so/view/_id" */))
-const _07c05303 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
-// TODO: remove in Nuxt 3
 const emptyFn = () => {}
-const originalPush = Router.prototype.push
-Router.prototype.push = function push (location, onComplete = emptyFn, onAbort) {
-  return originalPush.call(this, location, onComplete, onAbort)
-}
 
 Vue.use(Router)
 
 export const routerOptions = {
   mode: 'history',
-  base: decodeURI('/'),
+  base: '/',
   linkActiveClass: 'nuxt-link-active',
   linkExactActiveClass: 'nuxt-link-exact-active',
   scrollBehavior,
@@ -69,6 +65,10 @@ export const routerOptions = {
     component: _8962608c,
     name: "so-order"
   }, {
+    path: "/",
+    component: _07c05303,
+    name: "index"
+  }, {
     path: "/po/view/:id?",
     component: _5ea46dd1,
     name: "po-view-id"
@@ -76,15 +76,28 @@ export const routerOptions = {
     path: "/so/view/:id?",
     component: _6c36ac94,
     name: "so-view-id"
-  }, {
-    path: "/",
-    component: _07c05303,
-    name: "index"
   }],
 
   fallback: false
 }
 
-export function createRouter () {
-  return new Router(routerOptions)
+export function createRouter (ssrContext, config) {
+  const base = (config._app && config._app.basePath) || routerOptions.base
+  const router = new Router({ ...routerOptions, base  })
+
+  // TODO: remove in Nuxt 3
+  const originalPush = router.push
+  router.push = function push (location, onComplete = emptyFn, onAbort) {
+    return originalPush.call(this, location, onComplete, onAbort)
+  }
+
+  const resolve = router.resolve.bind(router)
+  router.resolve = (to, current, append) => {
+    if (typeof to === 'string') {
+      to = normalizeURL(to)
+    }
+    return resolve(to, current, append)
+  }
+
+  return router
 }

@@ -1,13 +1,8 @@
 import Vue from 'vue'
+import { decode, parsePath, withoutBase, withoutTrailingSlash, normalizeURL } from 'ufo'
 
-import {
-  getMatchedComponentsInstances,
-  getChildrenComponentInstancesUsingFetch,
-  promisify,
-  globalHandleError,
-  sanitizeComponent
-} from './utils'
-
+import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
+import NuxtError from './components/nuxt-error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
@@ -70,9 +65,10 @@ export default {
   },
   created () {
     // Add this.$nuxt in child instances
-    Vue.prototype.$nuxt = this
-    // add to window so we can listen when ready
+    this.$root.$options.$nuxt = this
+
     if (process.client) {
+      // add to window so we can listen when ready
       window.$nuxt = this
 
       this.refreshOnlineStatus()
@@ -86,9 +82,10 @@ export default {
     this.context = this.$options.context
   },
 
-  mounted () {
+  async mounted () {
     this.$loading = this.$refs.loading
   },
+
   watch: {
     'nuxt.err': 'errorChanged'
   },
@@ -98,9 +95,9 @@ export default {
       return !this.isOnline
     },
 
-      isFetching() {
+    isFetching () {
       return this.nbFetching > 0
-    }
+    },
   },
 
   methods: {
@@ -125,20 +122,12 @@ export default {
       }
       this.$loading.start()
 
-      const promises = pages.map((page) => {
-        const p = []
+      const promises = pages.map(async (page) => {
+        let p = []
 
         // Old fetch
         if (page.$options.fetch && page.$options.fetch.length) {
           p.push(promisify(page.$options.fetch, this.context))
-        }
-        if (page.$fetch) {
-          p.push(page.$fetch())
-        } else {
-          // Get all component instance to call $fetch
-          for (const component of getChildrenComponentInstancesUsingFetch(page.$vnode.componentInstance)) {
-            p.push(component.$fetch())
-          }
         }
 
         if (page.$options.asyncData) {
@@ -152,6 +141,19 @@ export default {
           )
         }
 
+        // Wait for asyncData & old fetch to finish
+        await Promise.all(p)
+        // Cleanup refs
+        p = []
+
+        if (page.$fetch) {
+          p.push(page.$fetch())
+        }
+        // Get all component instance to call $fetch
+        for (const component of getChildrenComponentInstancesUsingFetch(page.$vnode.componentInstance)) {
+          p.push(component.$fetch())
+        }
+
         return Promise.all(p)
       })
       try {
@@ -163,15 +165,25 @@ export default {
       }
       this.$loading.finish()
     },
-
     errorChanged () {
-      if (this.nuxt.err && this.$loading) {
-        if (this.$loading.fail) {
-          this.$loading.fail(this.nuxt.err)
+      if (this.nuxt.err) {
+        if (this.$loading) {
+          if (this.$loading.fail) {
+            this.$loading.fail(this.nuxt.err)
+          }
+          if (this.$loading.finish) {
+            this.$loading.finish()
+          }
         }
-        if (this.$loading.finish) {
-          this.$loading.finish()
+
+        let errorLayout = (NuxtError.options || NuxtError).layout;
+
+        if (typeof errorLayout === 'function') {
+          errorLayout = errorLayout(this.context)
         }
+
+        this.nuxt.errPageReady = true
+        this.setLayout(errorLayout)
       }
     },
 
@@ -192,7 +204,7 @@ export default {
         layout = 'default'
       }
       return Promise.resolve(layouts['_' + layout])
-    }
+    },
   },
 
   components: {

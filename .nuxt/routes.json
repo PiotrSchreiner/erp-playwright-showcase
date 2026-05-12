@@ -1,0 +1,74 @@
+[
+  {
+    "name": "customer",
+    "path": "/customer",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/customer.vue",
+    "chunkName": "pages/customer"
+  },
+  {
+    "name": "inventory",
+    "path": "/inventory",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/inventory.vue",
+    "chunkName": "pages/inventory"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/login/index.vue",
+    "chunkName": "pages/login/index"
+  },
+  {
+    "name": "supplier",
+    "path": "/supplier",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/supplier.vue",
+    "chunkName": "pages/supplier"
+  },
+  {
+    "name": "po-order",
+    "path": "/po/order",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/po/order.vue",
+    "chunkName": "pages/po/order"
+  },
+  {
+    "name": "set-Media",
+    "path": "/set/Media",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/set/Media.vue",
+    "chunkName": "pages/set/Media"
+  },
+  {
+    "name": "set-toko",
+    "path": "/set/toko",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/set/toko.vue",
+    "chunkName": "pages/set/toko"
+  },
+  {
+    "name": "so-form",
+    "path": "/so/form",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/so/form.vue",
+    "chunkName": "pages/so/form"
+  },
+  {
+    "name": "so-order",
+    "path": "/so/order",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/so/order.vue",
+    "chunkName": "pages/so/order"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/index.vue",
+    "chunkName": "pages/index"
+  },
+  {
+    "name": "po-view-id",
+    "path": "/po/view/:id?",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/po/view/_id.vue",
+    "chunkName": "pages/po/view/_id"
+  },
+  {
+    "name": "so-view-id",
+    "path": "/so/view/:id?",
+    "component": "/Users/piotrschreiner/Builds/erp-playwright-showcase/pages/so/view/_id.vue",
+    "chunkName": "pages/so/view/_id"
+  }
+]

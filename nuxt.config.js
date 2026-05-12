@@ -1,125 +1,52 @@
-
-export default {
-  mode: 'universal',
-  /*
-  ** Headers of the page
-  */
+const config = {
+  mode: "universal",
   head: {
-    title: process.env.npm_package_name || '',
+    title: "MaxonERP",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
-    script: [
-      { src: '/mylib.js'}
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
-  css: [
-    'element-ui/lib/theme-chalk/index.css'
-  ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-    '@/plugins/element-ui' 
-
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-  ],
-
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/toast',
-  ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+  css: ["element-ui/lib/theme-chalk/index.css"],
+  plugins: ["@/plugins/element-ui"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/toast", "@nuxtjs/auth-next"],
   axios: {
-    proxy: true,
+    proxy: true
   },
   proxy: {
-    '/api': {
-      target: 'http://demo.maxonerp.com/index.php/', 
-//      target: 'http://localhost/talagasoft/simak/v7.maxon/index.php/',  
-      pathRewrite: {
-        '^/api' : '/'
-        }
-      }    
-  },
-  env: {
-    baseUrl: process.env.BASE_URL,
-    siteUrl: 'http://demo.maxonerp.com/',
-//    siteUrl: 'http://localhost/talagasoft/simak/v7.maxon/',
-    proxyUrl: process.env.siteUrl+'index.php',
-  },
-  /*
-  ** Build configuration
-  */
-  build: {
-    transpile: [/^element-ui/],
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
+    "/api": {
+      target: "http://demo.maxonerp.com/index.php/",
+      pathRewrite: { "^/api": "/" }
     }
   },
   auth: {
-    // Options 
-    redirect() {
-      callback: '/callback'
-    },
-    mounted() {
-
-    },
     strategies: {
       local: {
+        token: {
+          property: "token.accessToken",
+          global: true,
+          required: true,
+          type: "Bearer"
+        },
+        user: {
+          property: "user"
+        },
         endpoints: {
-          login: { propertyName: 'token.accessToken' }
+          login: { url: "/api/login", method: "post" },
+          logout: { url: "/api/logout", method: "post" },
+          user: { url: "/api/user", method: "get" }
         }
-      },
-      auth0: {
-        domain: 'nuxt-auth.auth0.com',
-        client_id: 'q8lDHfBLJ-Fsziu7bf351OcYQAIe3UJv'
-      },
-      facebook: {
-        client_id: '1671464192946675',
-        userinfo_endpoint: 'https://graph.facebook.com/v2.12/me?fields=about,name,picture{url},email,birthday',
-        scope: ['public_profile', 'email', 'user_birthday']
-      },
-      google: {
-        client_id:
-          '956748748298-kr2t08kdbjq3ke18m3vkl6k843mra1cg.apps.googleusercontent.com'
-      },
-      github: {
-        client_id: process.env.GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET
-      },
-      twitter: {
-        client_id: 'FAJNuxjMTicff6ciDKLiZ4t0D'
       }
+    },
+    redirect: {
+      login: "/login",
+      logout: "/",
+      home: "/"
     }
   },
-  router: {
-    ///middleware: ['auth']
+  build: {
+    transpile: [/^element-ui/]
   }
+};
 
-}
+module.exports = config;
