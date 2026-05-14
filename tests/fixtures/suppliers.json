@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Alpha Supplies",
+      "city": "Hamburg"
+    },
+    {
+      "id": 2,
+      "name": "Beta Logistics",
+      "city": "Norderstedt"
+    }
+  ],
+  "total": 20,
+  "last_page": 10,
+  "current_page": 1
+}
