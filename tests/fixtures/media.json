@@ -1,0 +1,16 @@
+{
+  "fileList": [
+    {
+      "name": "company-logo.png",
+      "url": "https://placehold.co/100x100?text=Logo"
+    },
+    {
+      "name": "product-shot.jpg",
+      "url": "https://placehold.co/100x100?text=Product"
+    },
+    {
+      "name": "invoice-template.pdf",
+      "url": "https://placehold.co/100x100?text=PDF"
+    }
+  ]
+}
