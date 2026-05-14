@@ -1,0 +1,14 @@
+[
+  {
+    "customer_number": "C001",
+    "company": "TechCorp Solutions",
+    "city": "Hamburg",
+    "street": "Elbchaussee 123"
+  },
+  {
+    "customer_number": "C002",
+    "company": "Nordic Design",
+    "city": "Norderstedt",
+    "street": "Rathausallee 45"
+  }
+]
