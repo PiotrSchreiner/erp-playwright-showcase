@@ -1,9 +1,10 @@
 # Test Plan: MaxonErp Test Automation
 
-**Version:** 1.0  
-**Status:** Draft  
-**Reference:** ISTQB-Standard (Test Planning)  
+**Version:** 1.1  
+**Status:** Showcase Ready  
 **Author:** Piotr Schreiner
+
+---
 
 ## 1. Introduction
 
@@ -15,15 +16,21 @@ This test plan defines the strategy for verifying the core functionalities of th
 - **Purchase Orders:** Verification of procurement order listings and creation flows.
 - **Sales Orders:** Management and display of customer sales transactions.
 - **Master Data:** Management of Customers, Suppliers, and Inventory modules.
+- **Components:** Reusable UI elements like Lookup Dialogs and Item Forms.
 
 ## 3. Scope of Testing
 
-### 3.1 Features to be Tested
+### 3.1 Features to be Tested (Status)
 
-- **User Authentication:** Login flow and session handling.
-- **Data Rendering:** Accuracy of data tables and KPI cards (via API Mocking).
-- **Form Validation:** Input handling for Master Data (adding Customers/Suppliers).
-- **Navigation:** Module switching and state persistence across the ERP sidebar.
+- ✅ **User Authentication:** Login flow and session handling.
+- ✅ **Data Rendering:** Accuracy of data tables and KPI cards (via API Mocking).
+- ✅ **Navigation:** Module switching and state persistence across the ERP sidebar.
+- ✅ **Master Data Management:** Browsing and searching for Customers, Suppliers, and Inventory.
+- ✅ **Sales Order Workflow:** Full lifecycle from List-View to Detail-View and saving changes.
+- ✅ **Media Operations:** Handling file uploads and deletions in the media library.
+- ✅ **Complex UI Logic:** Isolated testing of `DialogItem` and `LookupData` components.
+- 🏗️ **Middleware Protection:** Verification of Auth-Guards to prevent unauthorized route access.
+- 🏗️ **State Management:** Verification of Vuex store persistence during user sessions.
 
 ### 3.2 Features not to be Tested
 
@@ -36,7 +43,7 @@ This test plan defines the strategy for verifying the core functionalities of th
 - **Test Types:** Functional Testing, Regression Testing, Smoke Testing.
 - **Approach:** Black-Box testing focused on User Interface interactions.
 - **Tools:** Playwright (JavaScript) for cross-browser automation.
-- **Data Management:** Due to the absence of a live backend, all API responses are intercepted using `page.route()` and fulfilled with predefined JSON fixtures to simulate a stable environment.
+- **Data Management:** All API responses are intercepted using `page.route()` and fulfilled with predefined JSON fixtures (located in `/tests/fixtures/`) to simulate a stable environment.
 
 ## 5. Acceptance Criteria (Pass/Fail)
 
