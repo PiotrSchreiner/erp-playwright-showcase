@@ -1,0 +1,18 @@
+{
+  "rows": [
+    {
+      "purchase_order_number": "PO-2026-001",
+      "supplier_name": "Global Tech Industries",
+      "po_date": "2026-05-10",
+      "terms": "KREDIT",
+      "amount": "1500.50"
+    },
+    {
+      "purchase_order_number": "PO-2026-002",
+      "supplier_name": "Office World",
+      "po_date": "2026-05-12",
+      "terms": "CASH",
+      "amount": "45.99"
+    }
+  ]
+}
