@@ -1,0 +1,35 @@
+{
+  "browse": {
+    "rows": [
+      {
+        "sales_order_number": "SO-2026-001",
+        "company": "Mustermann GmbH",
+        "sales_date": "2026-05-14",
+        "salesman": "OFFICE",
+        "amount": "1200.00"
+      }
+    ]
+  },
+  "detail": {
+    "sales_order_number": "SO-2026-001",
+    "sales_date": "2026-05-14",
+    "sold_to_customer": "Mustermann GmbH",
+    "payment_terms": "KREDIT",
+    "salesman": "OFFICE",
+    "comments": "Test Kommentar"
+  },
+  "items": {
+    "rows": [
+      {
+        "item_number": "ITEM-01",
+        "description": "Laptop Pro",
+        "quantity": 1,
+        "unit": "PCS",
+        "price": 1200,
+        "discount": 0,
+        "amount": 1200,
+        "line_number": 1
+      }
+    ]
+  }
+}
